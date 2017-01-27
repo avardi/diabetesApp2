@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">diabetesApp</string>
+    <string name="action_history">Show History</string>
+    <string name="action_reminder">Set a Reminder</string>
+    <string name="action_init">Initialize parameters</string>
+    <string name="action_bollus">Calculate </string>
+    <string name="bolus_val">0</string>
+    <string name="bolus_label">Bolus:   </string>
+    <string name="currentSugar">Current sugar Level</string>
+    <string name="mealCarbo">Amount of Carbohydrates</string>
+    <string name="done">DONE</string>
+    <string name="cancel">Cancel</string>
+    <string name="prompt_Sugar">Sugar level:  </string>
+    <string name="prompt_Carbo">Carbohydrates:  </string>
+    <string name="action_save">SAVE</string>
+    <string name="prompt_insulin">How much Insulin did you take?</string>
+    <string name="claculate">calculate</string>
+    <string name="prompt_Comment">Comment: </string>
+
+</resources>

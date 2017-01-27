@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.ashervardi.diabetesapp2.InitDataActivity">
+
+<RelativeLayout
+
+    android:id="@+id/activity_init_data"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    >
+
+    <TextView
+        android:text=" ----- INITIALIZATION  PAGE ----- "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/InitHeader"
+        android:background="@color/colorPrimary"
+        android:textColorLink="@android:color/white"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_margin="10dp" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/RadioGroup"
+        android:layout_below="@id/InitHeader"
+        android:layout_centerHorizontal="true"
+        android:checkedButton="@+id/SugartButton"
+        >
+
+        <RadioButton
+            android:text="Carbo/Ins ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/carboButton"
+            android:layout_weight="1"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:text="Correct. Factor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/correctButton"
+            android:layout_weight="1"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:text="Sugar Target"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/SugartButton"
+            android:layout_weight="1"
+            android:onClick="onRadioButtonClicked"/>
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RadioGroup"
+        android:id="@+id/inputrecord"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="From: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="2"
+            android:id="@+id/editInitfrom"
+            android:background="@color/light_green" />
+        <TextView
+            android:text="To: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="2"
+            android:id="@+id/editInitto"
+            android:background="@color/light_green" />
+        <TextView
+            android:text="Value:  "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="4"
+            android:id="@+id/editInitvalue"
+            android:background="@color/light_green" />
+
+        <Button
+            android:text="Add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            android:onClick="onAddButtonClicked"
+            />
+    </LinearLayout>
+
+
+
+    <TextView
+        android:text="Display Initial Value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linesep1"
+        android:textAlignment="center"
+        android:layout_below="@+id/inputrecord"
+        android:layout_alignParentStart="true"
+        android:layout_margin="6dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linesep1"
+        android:id="@+id/displayWindow"
+        android:minLines="6"
+        android:background="@color/light_green" />
+
+    <Button
+        android:text="Reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/displayWindow"
+        android:id="@+id/Resetbutton"
+        android:onClick="onResetButtonClicked"
+        android:elevation="3dp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/Resetbutton"
+        android:layout_alignStart="@+id/linesep1"
+        android:layout_marginTop="16dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <TextView
+                android:text="Patient Name :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text=""
+                android:ems="10"
+                android:id="@+id/patientName"
+                android:background="@color/light_green"
+                android:layout_margin="3dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <TextView
+                android:text="e-mail : "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/patientEmail"
+                android:background="@color/light_green"
+                android:layout_margin="3dp" />
+
+        </TableRow>
+        <Button
+            android:text="Save Initialization Data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/InitSave"
+            android:layout_margin="10dp"
+            android:background="@android:color/holo_red_dark"
+            android:onClick="onSaveButtonClicked"/>
+    </TableLayout>
+
+</RelativeLayout>
+
+</ScrollView>
