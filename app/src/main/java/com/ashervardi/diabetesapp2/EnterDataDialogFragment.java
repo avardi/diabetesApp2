@@ -54,7 +54,7 @@ public class EnterDataDialogFragment extends DialogFragment implements TextView.
         // Get field from view
         mEditText = (EditText) view.findViewById(R.id.currentInsulin);
         // Fetch arguments from bundle and set title
-        String title = getArguments().getString("title", "Enter Name");
+        String title = getArguments().getString("title");
         getDialog().setTitle(title);
         // Show soft keyboard automatically and request focus to field
         mEditText.requestFocus();

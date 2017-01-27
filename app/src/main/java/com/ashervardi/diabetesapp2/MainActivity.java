@@ -21,6 +21,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
     static InitContainer correctionF = new InitContainer("correctionFactor");
     static InitContainer sugarT = new InitContainer("SugatTarget");
 
-    static String PatientName = new String("");
-    static String PatientEmail = new String("");
+    static String PatientName;
+    static String PatientEmail;
     static boolean Initialized = false;
 
     static final int INIT_ACTIVITY = 1;
@@ -62,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
         setSupportActionBar(toolbar);
         setLocale("en");
         setInitialValues();
+    // save the main activity for further reference
+        final MainActivity my_main_activity = this;
 
 
         // define broadCast receiver to communicate with PDF writer
@@ -72,29 +75,36 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
             public void onReceive(Context context, Intent intent) {
                 String s = intent.getStringExtra(WriteDocService.SERVICE_MESSAGE);
                 // do something here.
-                if(s == "Done"){
+                if (s.equals("Done")){
                     File file = new File(Environment.getExternalStoragePublicDirectory(
                             Environment.DIRECTORY_DOCUMENTS), "pdfdemo");
                     Send(file, "sugarReport.pdf", PatientEmail);
-                } else if (s == "Error"){
+                } else if (s.equals("Error")){
                     Toast.makeText(context, "Error: Document was not sent...", Toast.LENGTH_SHORT).show();
-                };
+                }
 
             }
 
         };
 
+    // -- Save Button Listener
+        final Button buttonS = (Button) findViewById(R.id.saveButton);
+        buttonS.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                hideKeyboard(my_main_activity);
+                showEditDialog();
+            }
+        });
 
 
-
+    // -- Calc Button Listener
         final Button button = (Button) findViewById(R.id.calcButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Show User input fields
-                // findViewById(R.id.currentSugarLevel).setVisibility(VISIBLE);
-                //               findViewById(R.id.carbo).setVisibility(VISIBLE);
+
+                hideKeyboard(my_main_activity);
                 // Calculate Bollus -----
-                double C_bolus = 0.0;
+                double C_bolus;
 
                 setInitialValues();
 
@@ -106,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
                 myText = (TextView) findViewById(R.id.carbo);
                 int M_carbo = Integer.parseInt(myText.getText().toString());
 
-                if (C_Sugar > 70) {
+                if (C_Sugar >= 70) {
                     C_bolus = (double) (C_Sugar - S_Target) / (double) Corr_F + (double) M_carbo / (double) Carbo_R;
 
                 } else {
@@ -163,11 +173,6 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
             return true;
         }
 
-
-        if (id == R.id.action_save) {
-            showEditDialog();
-            return true;
-        }
         if(id== R.id.action_history){
             Intent intent = new Intent(this, DisplayDataActivity.class);
             Context c = getApplicationContext();
@@ -281,7 +286,6 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
                 Toast.makeText(this, "Locale in Hebrew !", Toast.LENGTH_LONG).show();
                 break;
 
-
         }
 
     }
@@ -289,7 +293,9 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
 
     @Override
     public void onFinishEditDialog(String inputText) {
+
         saveData(inputText);
+
     }
 
     @Override
@@ -322,10 +328,6 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
                 DatabaseContract.DiabetesTable.COLUMN_NAME_FROM + " <= " + current_hour + "  AND " +  DatabaseContract.DiabetesTable.COLUMN_NAME_TO + " > " + current_hour + " ) OR  (" +
                 DatabaseContract.DiabetesTable.COLUMN_NAME_FROM + " <= " + current_hour + "  OR " +  DatabaseContract.DiabetesTable.COLUMN_NAME_TO + " >  " + current_hour + ")";
 
-  /*      String selectQuery = "SELECT " + DatabaseContract.DiabetesTable.COLUMN_NAME_TYPE + " , " + DatabaseContract.DiabetesTable.COLUMN_NAME_VALUE  + " FROM "+ DatabaseContract.DiabetesTable.INIT_TABLE_NAME + " WHERE  " +
-                DatabaseContract.DiabetesTable.COLUMN_NAME_FROM + " <= '" + current_hour + "'  AND " +  DatabaseContract.DiabetesTable.COLUMN_NAME_TO + " > '" + current_hour + "' ";
-
-                */
         Cursor cursor = db.rawQuery(selectQuery,null);
         int current_lenth = cursor.getCount();
         if( current_lenth > 0) {
@@ -366,6 +368,17 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
         PatientName = ar[0];
         PatientEmail = ar[1];
 
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
 

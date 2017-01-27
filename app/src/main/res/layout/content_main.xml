@@ -70,7 +70,6 @@
         android:layout_height="20dp"
         android:id="@+id/separator"
         android:background="#50035f"
-        android:layout_weight="1"
         android:layout_below="@+id/imageView"
         android:layout_alignParentStart="true" />
 
@@ -79,11 +78,9 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/diabetes"
         android:id="@+id/imageView"
-        android:layout_weight="1"
         android:layout_centerHorizontal="true"
         android:scaleX="1.2"
         android:scaleY="0.8"
-        android:elevation="0dp"
         android:layout_alignParentTop="false"
         android:adjustViewBounds="false"
         android:layout_alignParentStart="false" />
@@ -91,7 +88,6 @@
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:paddingTop="10dp"
         android:id="@+id/tableLO2"
         android:layout_below="@+id/tableLO"
@@ -116,8 +112,7 @@
                 android:id="@+id/currentSugarLevel"
                 android:visibility="visible"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
-                android:gravity="left"
-                android:layout_alignParentStart="true"
+                android:gravity="start"
                 android:padding="2dp"
                 android:background="@color/light_yellow"
                 android:textSize="18sp"
@@ -189,6 +184,14 @@
         android:layout_alignTop="@+id/tableLO2"
         android:layout_alignParentEnd="true"
         android:text="@string/claculate"/>
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveButton"
+        android:layout_below="@+id/calcButton"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/darkseagreen" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -263,6 +266,8 @@
 
 
     </TableLayout>
+
+
 
 
 </RelativeLayout>

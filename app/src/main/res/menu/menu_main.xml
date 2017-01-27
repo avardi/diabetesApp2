@@ -4,21 +4,22 @@
     tools:context="com.ashervardi.diabetesapp2.MainActivity">
 
     <!-- Settings, should always be in the overflow -->
-    <item android:id="@+id/action_save"
-        android:title="@string/action_save"
-    app:showAsAction="ifRoom"/>
+
     <item android:id="@+id/action_init"
         android:title="@string/action_init"
         app:showAsAction="never"/>
     <item android:id="@+id/action_history"
-    android:title="@string/action_history"
-    app:showAsAction="never"/>
+        android:title="@string/action_history"
+        app:showAsAction="ifRoom"/>
     <item android:id="@+id/action_pdf"
-    android:title="Generate PDF Report"
-    app:showAsAction="never"/>
+        android:title="@string/generate_pdf_report"
+        app:showAsAction="never"/>
 
     <item android:id="@+id/action_reset"
-        android:title="Reset Database"
+        android:title="@string/reset_database"
+        app:showAsAction="never"/>
+    <item android:id="@+id/action_wxit"
+        android:title="@string/exit"
         app:showAsAction="never"/>
 
     </menu>
