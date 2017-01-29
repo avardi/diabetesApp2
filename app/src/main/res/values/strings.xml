@@ -18,5 +18,6 @@
     <string name="generate_pdf_report">Generate PDF Report</string>
     <string name="reset_database">Reset Database</string>
     <string name="exit">Exit</string>
+    <string name="action_delete">Delete Table Entry</string>
 
 </resources>

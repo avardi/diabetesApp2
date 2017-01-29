@@ -172,7 +172,11 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
 //            Toast.makeText(c,"Initailization completed",Toast.LENGTH_LONG).show();
             return true;
         }
-
+        if(id== R.id.action_delete){
+            Intent intent = new Intent(this, DisplayDiabetesDataActivity.class);
+            Context c = getApplicationContext();
+            startActivity(intent);
+        }
         if(id== R.id.action_history){
             Intent intent = new Intent(this, DisplayDataActivity.class);
             Context c = getApplicationContext();

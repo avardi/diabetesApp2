@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_display_diabetes_data"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ashervardi.diabetesapp2.DisplayDiabetesDataActivity">
+
+    <TextView
+        android:text="Select Entry to delete:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Select_promt"
+        android:padding="10dp"
+        android:textColor="@color/darkred" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/tableHeader"
+        android:layout_below="@id/Select_promt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:text="Date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textSize="12sp" />
+
+        <TextView
+            android:text="Time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textSize="12sp" />
+        <TextView
+            android:text="Sugar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textSize="12sp" />
+
+        <TextView
+            android:text="Carbo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textSize="12sp" />
+
+        <TextView
+            android:text="BolusS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textSize="12sp" />
+        <TextView
+            android:text="Bolus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textSize="12sp" />
+        <TextView
+            android:text="Comnt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tableHeader"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp">
+
+
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/diabetesList"
+            android:choiceMode="singleChoice"
+            android:listSelector="@android:color/background_dark"/>
+    </LinearLayout>
+
+</RelativeLayout>

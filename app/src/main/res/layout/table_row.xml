@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:id="@+id/diabetesItems"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tvtime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textSize="12sp" />
+    <TextView
+        android:id="@+id/tvsugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tvcarbo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tvbolusS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textSize="12sp" />
+    <TextView
+        android:id="@+id/tvbolus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textSize="12sp" />
+    <TextView
+        android:id="@+id/tvcomment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textSize="12sp" />
+</LinearLayout>
