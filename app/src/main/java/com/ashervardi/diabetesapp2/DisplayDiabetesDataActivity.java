@@ -55,7 +55,7 @@ public class DisplayDiabetesDataActivity extends AppCompatActivity {
                                 v.setClickable(false);
                                 v.setVisibility(View.INVISIBLE);
                         //        v.setBackgroundColor(ContextCompat.getColor(context, R.color.black));
-                                Toast.makeText(context, "Selected :", Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Item was deleted!", Toast.LENGTH_LONG).show();
                             }
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {

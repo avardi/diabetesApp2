@@ -1,13 +1,16 @@
 package com.ashervardi.diabetesapp2;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.net.Uri;
@@ -15,6 +18,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
@@ -42,10 +46,11 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
     static String currentSugar;
     private BroadcastReceiver PDFbroadcastReceiver;
 
+ /*
     static InitContainer carboInsulinR = new InitContainer("CarboInsulinRatio");
     static InitContainer correctionF = new InitContainer("correctionFactor");
     static InitContainer sugarT = new InitContainer("SugatTarget");
-
+*/
     static String PatientName;
     static String PatientEmail;
     static boolean Initialized = false;
@@ -197,12 +202,36 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
                     Environment.DIRECTORY_DOCUMENTS), "pdfdemo");
         }
         if(id == R.id.action_reset){
-            DiabetesDbHelper mDbHelper = new DiabetesDbHelper(this);
-            SQLiteDatabase db = mDbHelper.getWritableDatabase();
-            db.execSQL(SQL_DELETE_SUGAR_TABLE);
-            db.execSQL(SQL_CREATE_SUGAR_ENTRIES);
 
+            AlertDialog.Builder alertDB = new AlertDialog.Builder(this);
+            alertDB.setTitle("Reset Action");
+            alertDB.setMessage("Are you sure you want to delete the Database?");
+            alertDB.setPositiveButton("yes",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            // continue with delete
+                            DiabetesDbHelper mDbHelper = new DiabetesDbHelper(MainActivity.this);
+                            SQLiteDatabase db = mDbHelper.getWritableDatabase();
+                            db.execSQL(SQL_DELETE_SUGAR_TABLE);
+                            db.execSQL(SQL_CREATE_SUGAR_ENTRIES);
 
+                            Toast.makeText(MainActivity.this,"Database was deleted!",Toast.LENGTH_LONG).show();
+                        }
+                    });
+            alertDB.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(MainActivity.this,"Operation cancelled!",Toast.LENGTH_LONG).show();
+                }
+            });
+
+            AlertDialog alertDialog = alertDB.create();
+            alertDialog.show();
+
+                         }
+        if(id== R.id.action_exit){
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -236,6 +265,8 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
             Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
         }
     }
+
+    // Save current values to database.
     private void saveData(String insulin) {
         // Gets the data repository in write mode
         DiabetesDbHelper mDbHelper = new DiabetesDbHelper(this);
@@ -247,18 +278,34 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM HH:mm");
         Date now = new Date();
         String date = dateFormat.format(now);
-        TextView t = (TextView) findViewById(R.id.currentSugarLevel);
-        String sugar = t.getText().toString();
-        t = (TextView) findViewById(R.id.carbo);
-        String carbo = t.getText().toString();
-        t = (TextView) findViewById(R.id.bolusVal);
-        String bolus = t.getText().toString();
 
-        t = (TextView) findViewById(R.id.comment);
-        String cmnt = t.getText().toString();
+        try {
+            TextView t = (TextView) findViewById(R.id.currentSugarLevel);
+            String sugar = t.getText().toString();
+
+            t.setText("");
+            t = (TextView) findViewById(R.id.carbo);
+            String carbo = t.getText().toString();
+
+            t.setText("");
+            t = (TextView) findViewById(R.id.bolusVal);
+            String bolus = t.getText().toString();
+            t.setText("0");
+
+            t = (TextView) findViewById(R.id.comment);
+            String cmnt = t.getText().toString();
+            t.setText("");
+            // check if sugar & carbo values are legal.
+            int tmp = Integer.parseInt(sugar);
+            tmp = Integer.parseInt(carbo);
 
 // Insert the new row, returning the primary key value of the new row
-        mDbHelper.insertSugarData(this, date,sugar, carbo, bolus, insulin, cmnt );
+            mDbHelper.insertSugarData(this, date,sugar, carbo, bolus, insulin, cmnt );
+
+        } catch(java.lang.NumberFormatException e){
+            Toast.makeText(this, "Invalid inputs! data was not saved.", Toast.LENGTH_LONG).show();
+        }
+
 //        Toast.makeText(this, "Inserted new record " +  " !", Toast.LENGTH_SHORT).show();
     }
 

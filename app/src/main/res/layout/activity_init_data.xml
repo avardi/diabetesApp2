@@ -5,7 +5,9 @@
     android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.ashervardi.diabetesapp2.InitDataActivity">
+    tools:context="com.ashervardi.diabetesapp2.InitDataActivity"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true" >
 
 <RelativeLayout
 

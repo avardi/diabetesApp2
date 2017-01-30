@@ -87,8 +87,9 @@ public class DisplayDataActivity extends AppCompatActivity {
 
                     while (cursor.moveToNext()) {
                         // Read columns data
-                        int _day = cursor.getInt(cursor.getColumnIndex(DatabaseContract.DiabetesTable.COLUMN_NAME_DAY ));
-                        int _month = cursor.getInt(cursor.getColumnIndex(DatabaseContract.DiabetesTable.COLUMN_NAME_MONTH ));
+
+                        int _day = cursor.getInt(cursor.getColumnIndex(DatabaseContract.DiabetesTable.COLUMN_NAME_DAY));
+                        int _month = cursor.getInt(cursor.getColumnIndex(DatabaseContract.DiabetesTable.COLUMN_NAME_MONTH));
                         String date = Integer.toString(_day) + "/" + Integer.toString(_month);
                         String time = cursor.getString(cursor.getColumnIndex(DatabaseContract.DiabetesTable.COLUMN_NAME_TIME));
                         String sugar = cursor.getString(cursor.getColumnIndex(DatabaseContract.DiabetesTable.COLUMN_NAME_SUGAR));
@@ -113,6 +114,7 @@ public class DisplayDataActivity extends AppCompatActivity {
                         row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
                                 TableLayout.LayoutParams.WRAP_CONTENT));
                         String[] colText={date, time,sugar,carbo,bolus,insulin, cmnt};
+                        int i = 1;
                         for(String text:colText) {
                             TextView tv = new TextView(this);
                             TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
@@ -126,7 +128,13 @@ public class DisplayDataActivity extends AppCompatActivity {
                             tv.setText(text);
                             tv.setTextColor(textColor);
                             tv.setBackgroundColor(bColor);
+                            if (i == 7){
+                                tv.setWidth(200);
+                                tv.setHorizontallyScrolling(false);
+                                tv.setMaxLines(2);
+                            }
                             row.addView(tv);
+                            i++;
                         }
                         tableLayout.addView(row);
 
