@@ -67,7 +67,7 @@ public class InitDataActivity extends AppCompatActivity {
     }
 
     public void onSaveButtonClicked(View view) {
-        DiabetesDbHelper mDbHelper = new DiabetesDbHelper(this);
+        DiabetesDbHelper mDbHelper = new DiabetesDbHelper(this, DiabetesDbHelper.DATABASE_NAME);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
         //Remove Previous data
@@ -140,7 +140,7 @@ public class InitDataActivity extends AppCompatActivity {
     }
 
     public void loadFields() {
-        DiabetesDbHelper mDbHelper = new DiabetesDbHelper(this);
+        DiabetesDbHelper mDbHelper = new DiabetesDbHelper(this, DiabetesDbHelper.DATABASE_NAME);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
         // Load MISC Data
         String selectQuery = "SELECT " + DatabaseContract.DiabetesTable.COLUMN_NAME_PATIENT + "," + DatabaseContract.DiabetesTable.COLUMN_NAME_MAIL + " FROM " + DatabaseContract.DiabetesTable.MISC_TABLE_NAME;

@@ -25,7 +25,7 @@ public class DisplayDiabetesDataActivity extends AppCompatActivity {
         context=this;
         // Create DatabaseHelper instance
 
-        DiabetesDbHelper dataHelper=new DiabetesDbHelper(context);
+        DiabetesDbHelper dataHelper=new DiabetesDbHelper(context, DiabetesDbHelper.DATABASE_NAME);
         SQLiteDatabase db = dataHelper.getReadableDatabase();
         String selectQuery = "SELECT * FROM "+ DatabaseContract.DiabetesTable.SUGAR_TABLE_NAME + " ORDER BY " + DatabaseContract.DiabetesTable.COLUMN_NAME_MONTH + " DESC , " + DatabaseContract.DiabetesTable.COLUMN_NAME_DAY + " DESC";
         Cursor cursor = db.rawQuery(selectQuery,null);

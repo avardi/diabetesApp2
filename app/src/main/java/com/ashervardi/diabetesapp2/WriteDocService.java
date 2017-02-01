@@ -132,7 +132,7 @@ public class WriteDocService extends IntentService {
 
             //Step 4 Add content
             addTitlePage(document, PatientName);
-            DiabetesDbHelper dataHelper=new DiabetesDbHelper(mContext);
+            DiabetesDbHelper dataHelper=new DiabetesDbHelper(mContext, DiabetesDbHelper.DATABASE_NAME);
 
             Paragraph TblParagraph = new Paragraph("  ");
             createTable(TblParagraph ,dataHelper);

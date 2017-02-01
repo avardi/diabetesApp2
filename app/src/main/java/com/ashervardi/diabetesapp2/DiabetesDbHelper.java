@@ -21,6 +21,7 @@ public class DiabetesDbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
     public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "DiabetesDb3.db";
+    public static final String TEST_DB_NAME = "TestDb3.db";
     private static final int  TABLE_MAX_LENGTH = 500;
     // Create SQLITE Database
 
@@ -59,8 +60,8 @@ public class DiabetesDbHelper extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + DatabaseContract.DiabetesTable.MISC_TABLE_NAME;
 
 
-    public DiabetesDbHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    public DiabetesDbHelper(Context context, String DB_name) {
+        super(context, DB_name, null, DATABASE_VERSION);
     }
     public void onCreate(SQLiteDatabase db) {
         try {

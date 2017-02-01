@@ -17,14 +17,13 @@ import android.widget.TextView;
 
 public class DisplayDataActivity extends AppCompatActivity {
 
-    private Context context;
-        @Override
+    @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_display_data);
-            context=this;
+        Context context = this;
             // Create DatabaseHelper instance
-            DiabetesDbHelper dataHelper=new DiabetesDbHelper(context);
+            DiabetesDbHelper dataHelper=new DiabetesDbHelper(context, DiabetesDbHelper.DATABASE_NAME);
 
             // Reference to TableLayout
             TableLayout tableLayout=(TableLayout)findViewById(R.id.maintable);

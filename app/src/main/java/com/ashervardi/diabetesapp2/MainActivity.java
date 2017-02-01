@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
     static boolean Initialized = false;
 
     static final int INIT_ACTIVITY = 1;
+    static MainActivity my_main_activity;
 
 
 
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
         setLocale("en");
         setInitialValues();
     // save the main activity for further reference
-        final MainActivity my_main_activity = this;
+        my_main_activity = this;
 
 
         // define broadCast receiver to communicate with PDF writer
@@ -211,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
                         @Override
                         public void onClick(DialogInterface arg0, int arg1) {
                             // continue with delete
-                            DiabetesDbHelper mDbHelper = new DiabetesDbHelper(MainActivity.this);
+                            DiabetesDbHelper mDbHelper = new DiabetesDbHelper(MainActivity.this, DiabetesDbHelper.DATABASE_NAME);
                             SQLiteDatabase db = mDbHelper.getWritableDatabase();
                             db.execSQL(SQL_DELETE_SUGAR_TABLE);
                             db.execSQL(SQL_CREATE_SUGAR_ENTRIES);
@@ -269,7 +270,7 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
     // Save current values to database.
     private void saveData(String insulin) {
         // Gets the data repository in write mode
-        DiabetesDbHelper mDbHelper = new DiabetesDbHelper(this);
+        DiabetesDbHelper mDbHelper = new DiabetesDbHelper(this, DiabetesDbHelper.DATABASE_NAME);
 //        SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
 
@@ -369,7 +370,7 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
 
     private void setInitialValues(){
 
-        DiabetesDbHelper mDbHelper = new DiabetesDbHelper(this);
+        DiabetesDbHelper mDbHelper = new DiabetesDbHelper(this, DiabetesDbHelper.DATABASE_NAME);
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
         Date dNow = new Date( );
