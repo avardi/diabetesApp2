@@ -47,5 +47,7 @@
     <string name="Dmessage">Are you sure you want to delete this entry?</string>
     <string name="select_entry_to_delete">Select Entry to delete:</string>
     <string name="H_boluss">Suggest</string>
+    <string name="toast_invalidInput">Invalid inputs! data was not saved.</string>
+    <string name="promt_insulin">Units of insulin taken?</string>
 
 </resources>

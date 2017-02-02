@@ -311,7 +311,7 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
             mDbHelper.insertSugarData(this, date,sugar, carbo, bolus, insulin, cmnt );
 
         } catch(java.lang.NumberFormatException e){
-            Toast.makeText(this, "Invalid inputs! data was not saved.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.toast_invalidInput, Toast.LENGTH_LONG).show();
         }
 
 //        Toast.makeText(this, "Inserted new record " +  " !", Toast.LENGTH_SHORT).show();
@@ -319,49 +319,10 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
 
     private void showEditDialog() {
         FragmentManager fm = getSupportFragmentManager();
-        EnterDataDialogFragment editDialogFragment = EnterDataDialogFragment.newInstance("Units of insulin taken?");
+        EnterDataDialogFragment editDialogFragment = EnterDataDialogFragment.newInstance(getString(R.string.promt_insulin));
         editDialogFragment.show(fm, "fragment_edit_name");
     }
 
-    // set language
- /*
-    public void setLocale(String lang) {
-        Locale myLocale = new Locale(lang);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.setLocale(myLocale);
-        res.updateConfiguration(conf, dm);
-        Intent refresh = new Intent(this, AndroidLocalize.class);
-        startActivity(refresh);
-    }
-    */
-    /*
-    public void setLocale(String lang) {
-        switch (lang) {
-            case "en":
-                Locale locale = new Locale("en");
-                Locale.setDefault(locale);
-                Configuration config = new Configuration();
-                config.locale = locale;
-                getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-                Toast.makeText(this, "Locale in English !", Toast.LENGTH_LONG).show();
-                break;
-
-            case "he":
-                Locale locale2 = new Locale("he");
-                Locale.setDefault(locale2);
-                Configuration config2 = new Configuration();
-                config2.setLocale(locale2);
-                getBaseContext().getResources().update    (config2, getBaseContext().getResources().getDisplayMetrics());
-
-                Toast.makeText(this, "Locale in Hebrew !", Toast.LENGTH_LONG).show();
-                break;
-
-        }
-
-    }
-    */
 
 
     @Override
