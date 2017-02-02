@@ -19,5 +19,33 @@
     <string name="reset_database">Reset Database</string>
     <string name="exit">Exit</string>
     <string name="action_delete">Delete Table Entry</string>
+    <string name="correction_factor">correction factor</string>
+    <string name="carbo_insulin_ratio">carbo/insulin ratio</string>
+    <string name="sugar_level_target">Sugar Level Target</string>
+    <string name="save">Save</string>
+    <string name="add">Add</string>
+    <string name="value">Value:</string>
+    <string name="save_initialization_data">Save Initialization Data</string>
+    <string name="e_mail">e-mail :</string>
+    <string name="patient_name">Patient Name :</string>
+    <string name="display_initial_value">Display Initial Value</string>
+    <string name="to">To:</string>
+    <string name="from">From:</string>
+    <string name="sugar_target">Sugar Target</string>
+    <string name="correct_factor">Correct. Factor</string>
+    <string name="carbo_ins_ratio">Carbo/Ins ratio</string>
+    <string name="initialization_page">----- INITIALIZATION PAGE -----</string>
+    <string name="reset">Reset</string>
+    <string name="H_date">Date</string>
+    <string name="H_time">Time</string>
+    <string name="H_sugar">Sugar</string>
+    <string name="H_carbo">Carbo</string>
+    <string name="H_bolus">Bolus</string>
+    <string name="H_comment">Comment</string>
+    <string name="H_sug">Sug.</string>
+    <string name="Dtitle">Delete entry</string>
+    <string name="Dmessage">Are you sure you want to delete this entry?</string>
+    <string name="select_entry_to_delete">Select Entry to delete:</string>
+    <string name="H_boluss">Suggest</string>
 
 </resources>

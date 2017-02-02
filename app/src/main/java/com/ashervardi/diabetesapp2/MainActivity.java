@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,6 +23,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -67,7 +69,12 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setLocale("en");
+//        setLocale("he");
+        Locale myLocale = getResources().getConfiguration().locale;
+        if (myLocale.getLanguage().equals(new Locale("he").getLanguage())) {
+            Toast.makeText(this," Local Language is Hebrew...", Toast.LENGTH_SHORT).show();
+        }
+
         setInitialValues();
     // save the main activity for further reference
         my_main_activity = this;
@@ -317,6 +324,19 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
     }
 
     // set language
+ /*
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.setLocale(myLocale);
+        res.updateConfiguration(conf, dm);
+        Intent refresh = new Intent(this, AndroidLocalize.class);
+        startActivity(refresh);
+    }
+    */
+    /*
     public void setLocale(String lang) {
         switch (lang) {
             case "en":
@@ -332,8 +352,8 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
                 Locale locale2 = new Locale("he");
                 Locale.setDefault(locale2);
                 Configuration config2 = new Configuration();
-                config2.locale = locale2;
-                getBaseContext().getResources().updateConfiguration(config2, getBaseContext().getResources().getDisplayMetrics());
+                config2.setLocale(locale2);
+                getBaseContext().getResources().update    (config2, getBaseContext().getResources().getDisplayMetrics());
 
                 Toast.makeText(this, "Locale in Hebrew !", Toast.LENGTH_LONG).show();
                 break;
@@ -341,6 +361,7 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
         }
 
     }
+    */
 
 
     @Override

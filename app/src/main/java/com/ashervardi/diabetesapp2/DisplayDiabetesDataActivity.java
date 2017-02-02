@@ -42,9 +42,11 @@ public class DisplayDiabetesDataActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> a, final View v, final int position, long id) {
+                String title = getResources().getString(R.string.Dtitle);
+                String msg = getResources().getString(R.string.Dmessage);
                 new AlertDialog.Builder(context)
-                        .setTitle("Delete entry")
-                        .setMessage("Are you sure you want to delete this entry?")
+                        .setTitle(title)
+                        .setMessage(msg)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // continue with delete
@@ -68,6 +70,7 @@ public class DisplayDiabetesDataActivity extends AppCompatActivity {
 
             }
         });
+
 
     }
 

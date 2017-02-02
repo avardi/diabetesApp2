@@ -183,14 +183,6 @@
         android:layout_alignTop="@+id/tableLO2"
         android:layout_alignParentEnd="true"
         android:text="@string/claculate"/>
-    <Button
-        android:text="@string/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/saveButton"
-        android:layout_below="@+id/calcButton"
-        android:layout_alignParentEnd="true"
-        android:textColor="@color/red" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -252,6 +244,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
                 android:textSize="18sp" />
+
             <TextView
                 android:text="0"
                 android:layout_width="wrap_content"
@@ -265,7 +258,14 @@
 
     </TableLayout>
 
-
+    <Button
+        android:text="@string/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveButton"
+        android:textColor="@color/red"
+        android:layout_below="@+id/calcButton"
+        android:layout_alignEnd="@+id/calcButton" />
 
 
 </RelativeLayout>

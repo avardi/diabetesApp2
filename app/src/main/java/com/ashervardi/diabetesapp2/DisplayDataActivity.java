@@ -29,11 +29,21 @@ public class DisplayDataActivity extends AppCompatActivity {
             TableLayout tableLayout=(TableLayout)findViewById(R.id.maintable);
             // Add header row
             TableRow rowHeader = new TableRow(context);
-            rowHeader.setBackgroundColor(Color.parseColor("#c0c0c0"));
+            rowHeader.setBackgroundColor(ContextCompat.getColor(context, R.color.lightskyblue));
+
             rowHeader.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,0));
   //                  TableLayout.LayoutParams.WRAP_CONTENT));
-            String[] headerText={"Date", "Time","Sugar","Carbo","Bolus","Bolus", "Comment"};
-            String[] headerText2={"   ", "    ","     ","     ","Sug. ","     ", "      "};
+
+            String Hdate = getResources().getString(R.string.H_date);
+            String Htime = getResources().getString(R.string.H_time);
+            String Hsugar = getResources().getString(R.string.H_sugar);
+            String Hcarbo = getResources().getString(R.string.H_carbo);
+            String Hbolus = getResources().getString(R.string.H_bolus);
+            String Hcomment = getResources().getString(R.string.H_comment);
+            String Hsug = getResources().getString(R.string.H_sug);
+
+            String[] headerText={Hdate, Htime, Hsugar, Hcarbo, Hbolus,Hbolus, Hcomment};
+            String[] headerText2={"   ", "    ","     ","     ", Hsug,"     ", "      "};
 
             for(String c:headerText) {
                 TextView tv = new TextView(this);
@@ -49,7 +59,7 @@ public class DisplayDataActivity extends AppCompatActivity {
             }
             tableLayout.addView(rowHeader);
             TableRow rowHeader2 = new TableRow(context);
-            rowHeader2.setBackgroundColor(Color.parseColor("#c0c0c0"));
+            rowHeader2.setBackgroundColor(ContextCompat.getColor(context, R.color.lightskyblue));
             rowHeader2.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
                     TableLayout.LayoutParams.WRAP_CONTENT));
             for(String c:headerText2) {
@@ -74,8 +84,8 @@ public class DisplayDataActivity extends AppCompatActivity {
             {
                 String selectQuery = "SELECT * FROM "+ DatabaseContract.DiabetesTable.SUGAR_TABLE_NAME + " ORDER BY " + DatabaseContract.DiabetesTable.COLUMN_NAME_MONTH + " DESC , " + DatabaseContract.DiabetesTable.COLUMN_NAME_DAY + " DESC";
                 Cursor cursor = db.rawQuery(selectQuery,null);
-                int bColor = ContextCompat.getColor(context, R.color.honeydew);
-                int prevBcolor = ContextCompat.getColor(context, R.color.lightgreen);
+                int bColor = ContextCompat.getColor(context, R.color.light_blue);
+                int prevBcolor = ContextCompat.getColor(context, R.color.yellow);
                 int _prevDay = 0, _prev_Month = 0;
                 int tmp;
                 int textColor = ContextCompat.getColor(context, R.color.black);
