@@ -7,7 +7,7 @@
     tools:context="com.ashervardi.diabetesapp2.DisplayDiabetesDataActivity">
 
     <TextView
-        android:text="Select Entry to delete:"
+        android:text="@string/select_entry_to_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Select_promt"
@@ -24,7 +24,7 @@
         android:layout_marginTop="10dp">
 
         <TextView
-            android:text="Date"
+            android:text="@string/H_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/yellow"
@@ -34,7 +34,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:text="Time"
+            android:text="@string/H_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/yellow"
@@ -43,17 +43,7 @@
             android:layout_weight="1"
             android:textSize="12sp" />
         <TextView
-            android:text="Sugar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/yellow"
-            android:padding="5dp"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:textSize="12sp" />
-
-        <TextView
-            android:text="Carbo"
+            android:text="@string/H_sugar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/yellow"
@@ -63,7 +53,17 @@
             android:textSize="12sp" />
 
         <TextView
-            android:text="BolusS"
+            android:text="@string/H_carbo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textSize="12sp" />
+
+        <TextView
+            android:text="@string/H_boluss"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/yellow"
@@ -81,7 +81,7 @@
             android:layout_weight="1"
             android:textSize="12sp" />
         <TextView
-            android:text="Comnt"
+            android:text="@string/H_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/yellow"

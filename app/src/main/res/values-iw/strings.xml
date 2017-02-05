@@ -50,4 +50,6 @@
     <string name="H_boluss">המלצה</string>
     <string name="toast_invalidInput">קלט שגוי! נתונים לא הוכנסו לטבלה.</string>
     <string name="promt_insulin">כמה יחודות אינסולין הוזרקו</string>
+    <string name="toast_low_sugar">סןכר נמוך! בולוס לא יחושב.</string>
+    <string name="comnt">Comnt</string>
 </resources>

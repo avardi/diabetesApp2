@@ -85,7 +85,8 @@
         android:scaleY="0.8"
         android:layout_alignParentTop="false"
         android:adjustViewBounds="false"
-        android:layout_alignParentStart="false" />
+        android:layout_alignParentStart="false"
+        android:contentDescription="@string/this_is_the_main_application_logo" />
 
     <TableLayout
         android:layout_width="wrap_content"
@@ -218,6 +219,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="50dp"
+                android:paddingEnd = "10dp"
                 android:id="@+id/carboInsulinRatio"
                 android:layout_margin="2dp"
                 android:textSize="18sp" />
@@ -238,6 +240,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="50dp"
+                android:paddingEnd = "10dp"
                 android:id="@+id/correctionFactor"
                 android:layout_margin="2dp"
                 android:textSize="18sp" />
@@ -257,6 +260,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="50dp"
+                android:paddingEnd = "10dp"
                 android:id="@+id/sugarTarget"
                 android:layout_margin="2dp"
                 android:textSize="18sp" />

@@ -1,5 +1,7 @@
 package com.ashervardi.diabetesapp2;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application;
 import android.content.BroadcastReceiver;
@@ -15,6 +17,7 @@ import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.FragmentManager;
@@ -70,7 +73,8 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 //        setLocale("he");
-        Locale myLocale = getResources().getConfiguration().locale;
+ //       Locale myLocale = getResources().getConfiguration().locale;
+        Locale myLocale = getCurrentLocale();
         if (myLocale.getLanguage().equals(new Locale("he").getLanguage())) {
             Toast.makeText(this," Local Language is Hebrew...", Toast.LENGTH_SHORT).show();
         }
@@ -113,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
     // -- Calc Button Listener
         final Button button = (Button) findViewById(R.id.calcButton);
         button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("DefaultLocale")
             public void onClick(View v) {
 
                 hideKeyboard(my_main_activity);
@@ -135,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
                 } else {
                     // Low Sugar message!
                     C_bolus = 0;
-                    Toast.makeText(getApplicationContext(), "LOW SUGAR! no bollus calculation.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.toast_low_sugar, Toast.LENGTH_SHORT).show();
                 }
                 myText = (TextView) findViewById(R.id.bolusVal);
                 myText.setText(String.format("%.1f", C_bolus));
@@ -283,7 +288,7 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM HH:mm");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM HH:mm");
         Date now = new Date();
         String date = dateFormat.format(now);
 
@@ -356,7 +361,7 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
         Date dNow = new Date( );
-        SimpleDateFormat ft = new SimpleDateFormat ("H");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat ft = new SimpleDateFormat ("H");
         String current_hour = ft.format(dNow);
         String selectQuery = "SELECT " + DatabaseContract.DiabetesTable.COLUMN_NAME_TYPE + " , " + DatabaseContract.DiabetesTable.COLUMN_NAME_VALUE  + " FROM "+ DatabaseContract.DiabetesTable.INIT_TABLE_NAME + " WHERE ( " +
                 DatabaseContract.DiabetesTable.COLUMN_NAME_FROM + " <= " + current_hour + "  AND " +  DatabaseContract.DiabetesTable.COLUMN_NAME_TO + " > " + current_hour + " ) OR  (" +
@@ -413,6 +418,16 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    @TargetApi(Build.VERSION_CODES.N)
+    public Locale getCurrentLocale(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            return getResources().getConfiguration().getLocales().get(0);
+        } else{
+            //noinspection deprecation
+            return getResources().getConfiguration().locale;
+        }
     }
 }
 

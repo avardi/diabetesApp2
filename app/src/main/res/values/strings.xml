@@ -49,5 +49,8 @@
     <string name="H_boluss">Suggest</string>
     <string name="toast_invalidInput">Invalid inputs! data was not saved.</string>
     <string name="promt_insulin">Units of insulin taken?</string>
+    <string name="toast_low_sugar">LOW SUGAR! no bollus calculation.</string>
+    <string name="this_is_the_main_application_logo">This is the main Application Logo</string>
+    <string name="comnt">Comnt</string>
 
 </resources>
