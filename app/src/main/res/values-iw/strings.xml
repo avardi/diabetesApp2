@@ -51,5 +51,7 @@
     <string name="toast_invalidInput">קלט שגוי! נתונים לא הוכנסו לטבלה.</string>
     <string name="promt_insulin">כמה יחודות אינסולין הוזרקו</string>
     <string name="toast_low_sugar">סןכר נמוך! בולוס לא יחושב.</string>
-    <string name="comnt">Comnt</string>
+    <string name="PDFtitle">"דו"ח רמת סוכר עבור "</string>
+    <string name="PDFgenerated">"תאריך הפקה: "</string>
+    <string name="PDFnotice">הדו"ח הופק אוטומטית על ידי diabetesCompanion </string>
 </resources>

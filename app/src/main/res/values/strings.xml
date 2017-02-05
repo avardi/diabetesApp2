@@ -52,5 +52,8 @@
     <string name="toast_low_sugar">LOW SUGAR! no bollus calculation.</string>
     <string name="this_is_the_main_application_logo">This is the main Application Logo</string>
     <string name="comnt">Comnt</string>
+    <string name="PDFtitle">"Sugar Level Report for "</string>
+    <string name="PDFgenerated">"Report generated on: "</string>
+    <string name="PDFnotice">This document was generated automatically by DiabetesCompanion.</string>
 
 </resources>

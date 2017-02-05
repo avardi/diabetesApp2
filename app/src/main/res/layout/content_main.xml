@@ -191,7 +191,7 @@
         android:id="@+id/saveButton"
         android:layout_below="@+id/calcButton"
         android:layout_alignParentEnd="true"
-        android:textColor="@color/red" />
+        android:textColor="@color/darkviolet" />
 
     <TableLayout
         android:layout_width="match_parent"
