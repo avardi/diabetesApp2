@@ -55,5 +55,9 @@
     <string name="PDFtitle">"Sugar Level Report for "</string>
     <string name="PDFgenerated">"Report generated on: "</string>
     <string name="PDFnotice">This document was generated automatically by DiabetesCompanion.</string>
+    <string name="title_activity_diabetes_plot">DiabetesPlot</string>
+    <string name="action_plot">show Graph</string>
+    <string name="title_activity_diabetes_graph">DiabetesGraphActivity</string>
+    <string name="ChartHeader">Sugar level Chart</string>
 
 </resources>

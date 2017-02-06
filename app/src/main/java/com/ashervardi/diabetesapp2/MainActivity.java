@@ -200,6 +200,11 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
             Context c = getApplicationContext();
             startActivity(intent);
         }
+        if(id== R.id.action_plot){
+            Intent intent = new Intent(this, DiabetesGraphActivity.class);
+            Context c = getApplicationContext();
+            startActivity(intent);
+        }
         if (id == R.id.action_pdf) {
           /*
            * Creates a new Intent to start the WriteDocService
