@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -56,18 +57,19 @@ public class DiabetesGraphActivity extends AppCompatActivity {
         } catch (SQLiteException e) {
             e.printStackTrace();
         }
-        LineDataSet dataSet = new LineDataSet(entries, "Sugar level"); // add entries to dataset
+        String lable = getResources().getString(R.string.GraphLabel2);
+        LineDataSet dataSet = new LineDataSet(entries, lable); // add entries to dataset
         dataSet.setColor(Color.BLUE);
         dataSet.setValueTextColor(Color.BLACK);
         LineData lineData = new LineData(dataSet);
+        // Mark Normal Sugar limits
         YAxis leftAxis = chart.getAxisLeft();
-
-        LimitLine ll = new LimitLine(140f, "Normal Sugar Limits");
+        lable = getResources().getString(R.string.GraphLabel);
+        LimitLine ll = new LimitLine(140f, lable);
         ll.setLineColor(Color.RED);
         ll.setLineWidth(3f);
         ll.setTextColor(Color.BLACK);
         ll.setTextSize(12f);
-// .. and more styling options
 
         leftAxis.addLimitLine(ll);
         ll = new LimitLine(80f, "");
@@ -77,6 +79,10 @@ public class DiabetesGraphActivity extends AppCompatActivity {
 
 
         chart.setGridBackgroundColor(Color.LTGRAY);
+        Description d = new Description();
+        d.setText("This is a test");
+        d.setEnabled(false);
+        chart.setDescription (d);
         chart.setDrawBorders(true);
         chart.setData(lineData);
         chart.invalidate(); // refresh

@@ -59,5 +59,11 @@
     <string name="action_plot">show Graph</string>
     <string name="title_activity_diabetes_graph">DiabetesGraphActivity</string>
     <string name="ChartHeader">Sugar level Chart</string>
+    <string name="GraphLabel">Normal Sugar range</string>
+    <string name="GraphLabel2">Sugar Level</string>
+    <string name="CovError1">Carbo/Insulin ratio data is not covering 24 hours! Data not saved.</string>
+    <string name="CovError2">Correction Factor data is not covering 24 hours! Data not saved.</string>
+    <string name="CovError3">Sugar Tagets is not covering 24 hours! Data not saved.</string>
+    <string name="close">Close</string>
 
 </resources>

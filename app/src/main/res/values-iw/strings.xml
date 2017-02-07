@@ -56,4 +56,10 @@
     <string name="PDFnotice">הדו"ח הופק אוטומטית על ידי diabetesCompanion </string>
     <string name="action_plot">הצג גרף</string>
     <string name="ChartHeader">גרף רמות סוכר</string>
+    <string name="GraphLabel">טווח סוכר רצוי</string>
+    <string name="GraphLabel2">רמת סוכר</string>
+    <string name="CovError1">נתוני יחס פחמימות/אינסולין לא מכסים 24 שעות! הנתונים לא ישמרו. </string>
+    <string name="CovError2">נתוני פקטור תיקון לא מכסים 24 שעות! הנתונים לא ישמרו. </string>
+    <string name="CovError3">נתוני ערך סוכר רצוי לא מכסים 24 שעות! הנתונים לא ישמרו. </string>
+    <string name="close">סגור</string>
 </resources>

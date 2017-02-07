@@ -20,7 +20,8 @@
         android:id="@+id/graphHeader"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chart"

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -66,7 +67,11 @@ public class InitDataActivity extends AppCompatActivity {
 
     }
 
+    // Save button was pressed....
     public void onSaveButtonClicked(View view) {
+
+        String Err = getString(R.string.CovError1);
+        String ErrClose = getString(R.string.close);
         DiabetesDbHelper mDbHelper = new DiabetesDbHelper(this, DiabetesDbHelper.DATABASE_NAME);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
@@ -74,15 +79,29 @@ public class InitDataActivity extends AppCompatActivity {
         db.execSQL("DELETE FROM " + DatabaseContract.DiabetesTable.INIT_TABLE_NAME + ";");
         db.close();
         // Save Init data to SQL
+        if(!carboInsulinR.checkCoverage()){
+            new AlertDialog.Builder(this).setTitle("Initialization").setMessage(Err).setNeutralButton("Close", null).show();
+            return;
+        }
         Iterator it = carboInsulinR.getIterator();
         while (it.hasNext()) {
             InitData d = (InitData) it.next();
             mDbHelper.insertInitData(getApplicationContext(), DatabaseContract.DiabetesTable.TYPE_NAME_CARBO_INSULIN_RATIO, Integer.toString(d.get_from()), Integer.toString(d.get_to()), Integer.toString(d.get_val()));
         }
+        if(!correctionF.checkCoverage()){
+            Err = getString(R.string.CovError2);
+            new AlertDialog.Builder(this).setTitle("Initialization").setMessage(Err).setNeutralButton("Close", null).show();
+            return;
+        }
         it = correctionF.getIterator();
         while (it.hasNext()) {
             InitData d = (InitData) it.next();
             mDbHelper.insertInitData(getApplicationContext(), DatabaseContract.DiabetesTable.TYPE_NAME_CORRECTION_FACTOR, Integer.toString(d.get_from()), Integer.toString(d.get_to()), Integer.toString(d.get_val()));
+        }
+        if(!sugarT.checkCoverage()){
+            Err = getString(R.string.CovError3);
+            new AlertDialog.Builder(this).setTitle("Initialization").setMessage(Err).setNeutralButton("Close", null).show();
+            return;
         }
         it = sugarT.getIterator();
         while (it.hasNext()) {

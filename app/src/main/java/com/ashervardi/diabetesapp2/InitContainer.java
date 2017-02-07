@@ -1,5 +1,6 @@
 package com.ashervardi.diabetesapp2;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -38,5 +39,36 @@ public class InitContainer {
     public void delete (){
         this._list.clear();
         this._length = 0;
+    }
+
+    public boolean checkCoverage(){
+        int covered [] = new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+        // load data
+        Iterator it = this.getIterator();
+        while(it.hasNext()){
+            InitData d = (InitData) it.next();
+            int from = d.get_from();
+            int to = d.get_to();
+            if (to > from) {
+                for (int i = from; i < to; i++) {
+                    covered[i] = 1;
+                }
+            } else {
+                for (int i = 0; i < from; i++) {
+                    covered[i] = 1;
+                }
+                for (int i = from; i < 24; i++) {
+                    covered[i] = 1;
+                }
+            }
+        }
+        int sum = 0;
+        for (int i = 0; i < covered.length; i++){
+            sum += covered[i];
+        }
+        if(sum == 24){
+            return true;
+        } else return false;
     }
 }
