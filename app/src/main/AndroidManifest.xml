@@ -37,7 +37,11 @@
         <activity
             android:name=".DiabetesGraphActivity"
             android:label="@string/title_activity_diabetes_graph"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".IntroActivity"
+            android:label="@string/title_activity_run_intro" />
+
     </application>
 
 </manifest>

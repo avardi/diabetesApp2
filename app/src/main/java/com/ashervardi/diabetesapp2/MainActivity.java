@@ -248,6 +248,11 @@ public class MainActivity extends AppCompatActivity implements EnterDataDialogFr
             alertDialog.show();
 
                          }
+        if(id== R.id.action_help){
+
+            Intent intent = new Intent(this, IntroActivity.class);
+            startActivity(intent);
+        }
         if(id== R.id.action_exit){
             finish();
         }

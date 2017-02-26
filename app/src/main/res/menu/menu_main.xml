@@ -23,6 +23,9 @@
     <item android:id="@+id/action_reset"
         android:title="@string/reset_database"
         app:showAsAction="never"/>
+    <item android:id="@+id/action_help"
+        android:title="@string/action_help"
+        app:showAsAction="never"/>
     <item android:id="@+id/action_exit"
         android:title="@string/exit"
         app:showAsAction="never"/>

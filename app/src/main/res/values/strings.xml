@@ -65,5 +65,27 @@
     <string name="CovError2">Correction Factor data is not covering 24 hours! Data not saved.</string>
     <string name="CovError3">Sugar Tagets is not covering 24 hours! Data not saved.</string>
     <string name="close">Close</string>
+    <string name="action_help">Help</string>
+    <string name="title_activity_run_intro">RunIntro</string>
+    <string name="Intro0">This application is designed for Type 1 diabetes patients that inject insuling regurarly. \n
+        The application helps determine how many insulin units to inject based on the current sugar level and the amount of carbohidrates consumed.\n
+        The user should initaialize the application with his personal data so that the bolus calculation is calibrated to his specific profile.
+        </string>
+    <string name="Intro0_header">Diabetes Companion Help</string>
+    <string name="Intro1_header">Bolus Calculation and storing data</string>
+    <string name="Intro1">The user should type in the appropriate fields, the current sugar level and carbohydrates (optionaly adding a short comment).
+    Pressing the Calc button displays the suggested Bolus value. Pressing the "save" button promts the user to enter the actual amount of insuling injected
+        and saves the data in the the history table.  </string>
+    <string name="Intro2">The initialization screen is where you set your personal data (the application stores the information until you decide to change it).\n
+    You set the values for the following parameters:\n
+        carbo/Ins Ratio - this is the amount of carbohydrates (in grams) covered by 1 unit of insulin (typical numbers 1-15) \n
+        Correction Factor - the amount by which your blood glucose is reduced by one unit of insulin in a period of two to four hours(typical: 30-50 mg/dl)\n
+        Sugar Target - The desired target for your sugar level
+    </string>
+    <string name="Intro2_header">Initialization</string>
+    <string name="Intro3_header">Initialization (cont..)</string>
+    <string name="Intro3">bla bla</string>
+    <string name="Intro4_header">Other Operations</string>
+    <string name="Intro4">These are additional operations</string>
 
 </resources>
